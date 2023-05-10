@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #1C1C1E;
+    }
+    .message-container {
+      display: flex;
+      flex-direction: column;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    .message {
+      padding: 10px 20px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      max-width: 80%;
+      font-size: 16px;
+    }
+    .left {
+      align-self: flex-start;
+      background-color: #0B93F6;
+      color: #FFFFFF;
+    }
+    .right {
+      align-self: flex-end;
+      background-color: #2C2C2E;
+      color: #FFFFFF;
+    }
+  </style>
+</head>
+<body>
+  <div class="message-container" id="message-container">
+  </div>
+  <script>
+    const messages = [
+      { side: 'left', text: 'Hey! Check out the latest podcast on YouTube I just sent to you. You\'ll love it!' },
+      { side: 'right', text: 'Oh, great. More videos... I\'ll take a look when I have some time later.' },
+      { side: 'left', text: 'Well, while you\'re at it, you might as well take a look at these too:' },
+      { side: 'left', text: 'Video 1: https://youtu.be/video1' },
+      { side: 'left', text: 'Video 2: https://youtu.be/video2' },
+      { side: 'left', text: 'Video 3: https://youtu.be/video3' },
+      { side: 'left', text: 'Video 4: https://youtu.be/video4' },
+      { side: 'right', text: 'Oh, fantastic. Just what I needed, more videos to watch. I\'ll DEFINITELY find the time for those.' },
+      { side: 'left', text: "And don't you dare try to summarize them with VidCatter again! You should really experience them in their full glory." },
+      { side: 'right', text: 'Me? Use VidCatter? I would never even dream of it! 😇'}
+    ];
+
+    const container = document.getElementById('message-container');
+
+    messages.forEach((message, index) => {
+      setTimeout(() => {
+        const messageElement = document.createElement('div');
+        messageElement.classList.add('message', message.side);
+        messageElement.textContent = message.text;
+        container.appendChild(messageElement);
+        container.scrollTop = container.scrollHeight;
+      }, index * 1500);
+    });
+  </script>
+</body>
+</html>
